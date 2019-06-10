@@ -201,7 +201,7 @@ if __name__ == '__main__':
     data = (x_test, y_test)
 
     # VAE loss = mse_loss or xent_loss + kl_loss
-    if args.mse:
+    if args.mse or True:
         reconstruction_loss = mse(K.flatten(inputs), K.flatten(outputs))
     else:
         reconstruction_loss = binary_crossentropy(K.flatten(inputs),
@@ -213,7 +213,7 @@ if __name__ == '__main__':
     kl_loss *= -0.5
     vae_loss = K.mean(reconstruction_loss + kl_loss)
     vae.add_loss(vae_loss)
-    vae.compile(optimizer='rmsprop')
+    vae.compile(optimizer='adam')
     vae.summary()
     plot_model(vae, to_file='vae_cnn.png', show_shapes=True)
 

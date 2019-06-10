@@ -28,7 +28,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import argparse
 import os
-
+os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
 
 # reparameterization trick
 # instead of sampling from Q(z|X), sample epsilon = N(0,I)
